@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 
 URL = "https://www.billboard.com/charts/hot-100/"
 
@@ -63,4 +64,15 @@ for i in range(0, len(lastweek_pos), 6):
     peak_pos.append(lastweek_pos[i + 1])
     weeks_on_chart.append(lastweek_pos[i + 2])
     
+# --CREATE DATAFRAME TO EXPORT EXCEL FILE
+data_dict ={
+    "Song": songs,
+    "Singers": singers,
+    "Current position": current_pos,
+    "Peak position": peak_pos,
+    "Week on chart": weeks_on_chart 
+}
 
+df = pd.DataFrame(data_dict)
+
+df.to_excel("Billboard 100 data.xlsx")
