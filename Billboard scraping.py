@@ -1,6 +1,3 @@
-from calendar import week
-from unicodedata import name
-from urllib import response
 from bs4 import BeautifulSoup
 import requests
 
